@@ -1,5 +1,5 @@
-python-pechkin
-==============
+python-voximplant
+=================
 
 Интеграция http://voximplant.com/ и вашего приложения
 
