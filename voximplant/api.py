@@ -27,7 +27,7 @@ class API(object):
     def log_errors(self, response):
         json = response.json()['result']
         if json != 1:
-            log(u'error')
+            logger.error(u'error')
 
     def _api_request(self, METHOD, **kwargs):
         response = self._client.get(self.API_URL, params=kwargs)
