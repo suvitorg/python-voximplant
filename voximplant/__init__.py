@@ -1,2 +1,3 @@
+#from api import Api
 
-from api import API
+VERSION = '0.0.1'

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
-from functools import partial
+import urlparse
 
 import requests
 
@@ -25,19 +25,21 @@ class API(object):
                                'account_password': password}
 
     def log_errors(self, response):
-        json = response.json()['result']
-        if json != 1:
-            logger.error(u'error')
+        json = response.json()
+        if 'error' in json:
+            error = json['error']
+            logger.error(u'%s %s', error['code'], error['msg'])
 
     def _api_request(self, METHOD, **kwargs):
-        response = self._client.get(self.API_URL, params=kwargs)
+        response = self._client.get(urlparse.urljoin(self.API_URL, METHOD),
+                                    params=kwargs)
         self.log_errors(response)
         return response.json()
 
     def _get_user_key(self, user):
         if isinstance(user, int):
             userkey = 'user_id'
-        else
+        else:
             userkey = 'user_name'
         return userkey
 
@@ -47,6 +49,12 @@ class API(object):
                        mobile_phone=None,
                        user_active=True,
                        user_custom_data=''):
+
+        if len(user_name) < 6:
+             raise Exception('User name too short')
+
+        if len(user_password) < 7:
+             raise Exception('User password too short')
 
         params = {'user_name': user_name,
                   'user_display_name': user_display_name,
