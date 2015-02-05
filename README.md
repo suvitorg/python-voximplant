@@ -3,7 +3,7 @@ python-pechkin
 
 Интеграция http://voximplant.com/ и вашего приложения
 
-pechkin API: http://voximplant.com/docs/references/httpapi/
+HTTP API: http://voximplant.com/docs/references/httpapi/
 
 Пример кода
 

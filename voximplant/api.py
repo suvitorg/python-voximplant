@@ -65,7 +65,7 @@ class API(object):
         if user_custom_data:
             params['user_custom_data'] = user_custom_data
 
-        return self._api_request('AddUser', **params)
+        return self._api_request('AddUser', **params)['user_id']
 
     def user_del(self, user):
         return self._api_request('DelUser', **{self._get_user_key(user): user})
@@ -76,11 +76,11 @@ class API(object):
                   'application': application,
                   'bind': 1,
                  }
-        self._api_request('BindUser', **params)
+        return self._api_request('BindUser', **params)
 
     def user_unbind(self, user, application):
         params = {self._get_user_key(user): user,
                   'application': application,
                   'bind': 0,
                  }
-        self._api_request('BindUser', **params)
+        return self._api_request('BindUser', **params)
