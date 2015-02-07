@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -
 #
-# This file is part of python-pechkin released under the MIT license. 
+# This file is part of python-voximplant released under the MIT license. 
 # See the LICENSE for more information.
 
 import os
@@ -16,8 +16,8 @@ setup(
             'README.md'
         )
     ).read(),
-    author='Victor Safronovich',
-    author_email='vsafronovich@gmail.com',
+    author='SUVIT LLC',
+    author_email='mail@suvit.ru',
     license='MIT',
     url='http://github.com/suvitorg/python-voximplant',
     zip_safe=False,
